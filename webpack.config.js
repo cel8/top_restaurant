@@ -1,4 +1,5 @@
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -8,14 +9,51 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Restaurant Page - La bella Napoli',
-      template: './src/index.html'
+      template: './src/index.html',
+      favicon: './src/assets/icon/site.ico',
+      inject: 'body',
+      cache: false,
     }),
   ],
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+  },  
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: [
+          {
+            // Creates `style` nodes from JS strings
+            loader: 'style-loader',
+          },
+          {
+            // Translates CSS into CommonJS
+            loader: 'css-loader',
+          }
+        ],
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif|ico)$/i,
+        type: 'asset/resource',
+        // Use 'generator' to output unique name (based on webpack pattern e.g. [name], [ext], etc.)
+        generator: {
+          filename: "[name][ext][query]",
+          outputPath: "images/",
+        },
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        generator: {
+          outputPath: "fonts/",
+        },
+      },
+    ],
   },
 };
