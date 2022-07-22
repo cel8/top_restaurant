@@ -6,6 +6,11 @@ module.exports = {
   mode: 'development',
   entry: {
     index: './src/index.js',
+    skeletonController: './src/controller/skeletonController.js',
+    navController: './src/controller/navController.js',
+    home: './src/modules/home.js',
+    menu: './src/modules/menu.js',
+    contact: './src/modules/contact.js',
   },
   devtool: 'inline-source-map',
   plugins: [
@@ -19,7 +24,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: 'main.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },  

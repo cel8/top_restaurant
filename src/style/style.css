@@ -136,6 +136,11 @@ header {
   filter: drop-shadow(1px 2px 0 rgb(184, 184, 184));
 }
 
+.navButton > img,
+.navButton > p {
+  pointer-events: none;
+}
+
 .navButton:hover:enabled {
   filter: brightness(90%) drop-shadow(1px 2px 0 rgb(184, 184, 184));
 }
@@ -151,6 +156,21 @@ header {
   width: 32px;
 }
 
+#content {
+  height: 100%;
+}
+
 main {
+  height: 875px;
   padding: 3.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+  /* TODO fix CSS dependency for webpack background-image: url('./../assets/images/background.jpg'); */
+  background-repeat: no-repeat;
+}
+
+.main-content {
+  border: solid black 0.1rem;
+  height: 100%;
+  overflow-y: auto;
 }
