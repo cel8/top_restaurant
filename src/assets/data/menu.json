@@ -1,0 +1,107 @@
+[
+  {
+    "dish-name": "Starter",
+    "menu": [
+      { 
+        "name": "Classic Montanara", 
+        "description": "Fried pizza with tomato sauce made out of canned “pomodorino del Piennolo del Vesuvio AOP” , Caciocavallo Podolico cheese shavings from Irpinia area, basil.", 
+        "price": "€ 3,00"
+      },
+      { 
+        "name": "Frittatina di pasta",
+        "description": "Bucatini di Gragnano PGI, béchamel made with alpine butter and milk, stuffed with cooked ham, Pecorino Romano DOP, smoked provola and pepper.", 
+        "price": "€ 2,50"
+      },
+      { 
+        "name": "Crocchè",
+        "description": "Not breaded, with potatoes, smoked provola, Pecorino Romano DOP, parsley, pepper.", 
+        "price": "€ 2,50"
+      }
+    ]
+  },
+  {
+    "dish-name": "Pizza",
+    "menu": [
+      { 
+        "name": "Margherita", 
+        "description": "Peeled tomato San Marzano AOP, fior di latte cheese from Agerola, extra virgin olive oil from Frantoio San Comaio, basil.", 
+        "price": "€ 5,00"
+      },
+      { 
+        "name": "Marinara", 
+        "description": "Tomato “Antichi sapori di Napoli”, wild oregano, garlic, extra virgin olive oil from Frantoio La Torretta, basil.", 
+        "price": "€ 4,00"
+      },
+      { 
+        "name": "Capricciosa", 
+        "description": "Peeled tomato San Marzano DOP, salami from  Agerola,  natural artichokes from Paestum, in oil preserved Cetara anchoives, black Gaeta olives, fior di latte cheese from Agerola, extra virgin olive oil from Frantoio San Salvatore, basil.", 
+        "price": "€ 5,50"
+      },
+      { 
+        "name": "Pomodorini and Bufala", 
+        "description": "Canned tomatoes ” pomodorini del piennolo bagnolese”, buffala cheese, extra virgin olive oil from Frantoio Monzo, basil.", 
+        "price": "€ 5,00"
+      }
+    ]
+  },
+  {
+    "dish-name": "Calzone",
+    "menu": [
+      { 
+        "name": "Baked calzone", 
+        "description": "Tomato “Antichi sapori di Napoli”, wild oregano, garlic, extra virgin olive oil from Frantoio La Torretta, basil.", 
+        "price": "€ 6,00"
+      },
+      { 
+        "name": "Fried calzone", 
+        "description": "Tomato “Antichi sapori di Napoli”, wild oregano, garlic, extra virgin olive oil from Frantoio La Torretta, basil.", 
+        "price": "€ 6,00"
+      }
+    ]
+  },
+  {
+    "dish-name": "Dessert",
+    "menu": [
+      { 
+        "name": "Babà", 
+        "description": "", 
+        "price": "€ 4,00"
+      },
+      { 
+        "name": "Lemon delights", 
+        "description": "", 
+        "price": "€ 4,50"
+      },
+      { 
+        "name": "Mixed berries cheesecake", 
+        "description": "", 
+        "price": "€ 4,50"
+      }
+    ]
+  },
+  {
+    "dish-name": "Drink",
+    "menu": [
+      { 
+        "name": "Still Water (50 Cl)", 
+        "description": "", 
+        "price": "€ 2,00"
+      },
+      { 
+        "name": "Sparkling Water (50 Cl)", 
+        "description": "", 
+        "price": "€ 2,00"
+      },
+      { 
+        "name": "Coca Cola (33 Cl)", 
+        "description": "", 
+        "price": "€ 3,00"
+      },
+      { 
+        "name": "Caffè (Expresso)", 
+        "description": "", 
+        "price": "€ 1,10"
+      }
+    ]
+  }
+]
