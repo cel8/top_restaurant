@@ -58,7 +58,7 @@ module.exports = {
         generator: {
           outputPath: "fonts/",
         },
-      },
+      }
     ],
   },
 };

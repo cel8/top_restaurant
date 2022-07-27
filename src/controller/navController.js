@@ -1,6 +1,7 @@
-import { createHome } from './../modules/home'
-import { createMenu } from './../modules/menu'
-import { createContact } from './../modules/contact'
+import { createHome } from './../modules/home.js'
+import { createMenu } from './../modules/menu.js'
+import { createContact } from './../modules/contact.js'
+import { MenuController } from './menuController.js'
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -16,7 +17,7 @@ export const pageType = {
 
 export class NavigationController {
   constructor() {
-
+    this.menuController = new MenuController();
   }
   #showPage(elements) {
     const mainContent = document.querySelector('.main-content');
@@ -29,7 +30,7 @@ export class NavigationController {
     let elements = [];
     switch (pageName) {
       case pageType.menu:
-        elements = createMenu();
+        elements = this.menuController.prepareMenu();
         break;
       case pageType.contact:
         elements = createContact();
