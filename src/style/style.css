@@ -165,12 +165,25 @@ main {
   padding: 3.5rem;
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-  /* TODO idk if i like it background-image: url('Assets/images/background.jpg'); */
-  background-repeat: no-repeat;
+  background-image: url('Assets/images/background.jpg');
+  
 }
 
 .main-content {
+  background-color: #300808;
+  animation: rise 1.5s ease-in infinite;
+  background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%);
+  color: #ffd900;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
   border: solid black 0.1rem;
   height: 100%;
   overflow-y: auto;
+}
+
+@keyframes rise {
+  0%    { background-image: radial-gradient(#ff5000 10%, rgba(255, 80, 0, 0) 70%); }
+  20%   { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
+  80%   { background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%); }
+  100%  { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
 }
