@@ -1,9 +1,7 @@
-import { Dish } from './dish.js'
+import { Dish } from 'Modules/dish.js'
 
 export class DishContainer {
-  constructor({
-    name
-  }) {
+  constructor(name) {
     this.name = name;
     this.dishes = [];
   }

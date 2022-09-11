@@ -1,7 +1,7 @@
-import './../assets/images/svg/home.svg'
-import './../assets/images/svg/menu.svg'
-import './../assets/images/svg/contact.svg'
-import { pageType, NavigationController } from './navController.js'
+import 'Assets/images/svg/home.svg'
+import 'Assets/images/svg/menu.svg'
+import 'Assets/images/svg/contact.svg'
+import { pageType, NavigationController } from 'Controller/navController.js'
 
 export class SkeletonController {
   constructor() {

@@ -1,7 +1,6 @@
-import { createHome } from './../modules/home.js'
-import { createMenu } from './../modules/menu.js'
-import { createContact } from './../modules/contact.js'
-import { MenuController } from './menuController.js'
+import { createHome } from 'Modules/home.js'
+import { createContact } from 'Modules/contact.js'
+import { MenuController } from 'Controller/menuController.js'
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {

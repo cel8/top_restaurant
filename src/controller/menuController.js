@@ -1,13 +1,13 @@
-import { DishContainer } from './../modules/dishContainer.js'
-import { createMenu } from './../modules/menu.js'
+import { DishContainer } from 'Modules/dishContainer.js'
+import { createMenu } from 'Modules/menu.js'
 // Assets data
-import dataMenu from './../assets/data/menu.json';
-import './../assets/images/pizza-margherita.jpg'
-import './../assets/images/pizza-marinara.jpg'
-import './../assets/images/pizza-capricciosa.jpg'
-import './../assets/images/pizza-pomodorini-bufala.jpg'
-import './../assets/images/calzone-ripieno-al-forno.jpg'
-import './../assets/images/calzone-ripieno-fritto.jpg'
+import dataMenu from 'Assets/data/menu.json';
+import 'Assets/images/pizza-margherita.jpg'
+import 'Assets/images/pizza-marinara.jpg'
+import 'Assets/images/pizza-capricciosa.jpg'
+import 'Assets/images/pizza-pomodorini-bufala.jpg'
+import 'Assets/images/calzone-ripieno-al-forno.jpg'
+import 'Assets/images/calzone-ripieno-fritto.jpg'
 
 export class MenuController {
   constructor() {
@@ -43,11 +43,9 @@ export class MenuController {
     const divMenuContainer = document.createElement('div');
     
     this.menu.forEach((dishContainer) => {
-      const divDishContainer = document.createElement('div');
       const pDishContainerName = document.createElement('p');
       const gridDishContainer = document.createElement('div');
       // Get dish container
-      console.log(typeof(dishContainer));
       pDishContainerName.textContent = dishContainer.name;
       const dishes = dishContainer.dishes;
       dishes.forEach((dish) => {
@@ -61,9 +59,8 @@ export class MenuController {
         gridDishContainer.appendChild(pDishPrice);
         gridDishContainer.appendChild(pDishDescription);
       });
-      divDishContainer.appendChild(pDishContainerName);
+      divMenuContainer.appendChild(pDishContainerName);
       divMenuContainer.appendChild(gridDishContainer);
-      divMenuContainer.appendChild(divDishContainer);
     });
     return createMenu(divMenuContainer);
   }

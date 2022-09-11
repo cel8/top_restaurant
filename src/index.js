@@ -1,6 +1,6 @@
 import _ from 'lodash';
-import './style/style.css'
-import { SkeletonController } from './controller/skeletonController'
+import 'Style/style.css'
+import { SkeletonController } from 'Controller/skeletonController'
 
 // Global variable
 const content = document.querySelector('#content');
