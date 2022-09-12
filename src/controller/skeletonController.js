@@ -2,26 +2,14 @@ import 'Assets/images/svg/home.svg'
 import 'Assets/images/svg/menu.svg'
 import 'Assets/images/svg/contact.svg'
 import { pageType, NavigationController } from 'Controller/navController.js'
+import { createButton } from 'Utilities/button.js'
 
 export class SkeletonController {
   constructor() {
     this.navController = new NavigationController();
   }
-  #createButton(btnText, svgIcon = null) {
-    const btn = document.createElement('button');
-    const pElem = document.createElement('p');
-    // Set up text element
-    pElem.textContent = btnText;
-    // Insert icon when exist
-    if(svgIcon) {
-      const imgElem = document.createElement('img');
-      imgElem.setAttribute('src', svgIcon);
-      imgElem.setAttribute('alt', btnText);
-      imgElem.className = 'icon';
-      btn.appendChild(imgElem);
-    }
-    btn.appendChild(pElem);
-    btn.onclick = (e) => {
+  #createNavigationBar() {
+    const btnCbEvent = (e) => {
       const pElem = e.target.querySelector('p');
       if(pElem === null) return;
       let page;
@@ -34,16 +22,11 @@ export class SkeletonController {
       }
       this.navController.changePage(page);
     }
-    // Setup btn properties
-    btn.className = 'navButton';
-    return btn;  
-  }
-  #createNavigationBar() {
     const divElem = document.createElement('div');
     // Fill text in button
-    divElem.appendChild(this.#createButton('Home', './images/home.svg'));
-    divElem.appendChild(this.#createButton('Menu', './images/menu.svg'));
-    divElem.appendChild(this.#createButton('Contact', './images/contact.svg'));
+    divElem.appendChild(createButton('Home', 'home.svg', btnCbEvent));
+    divElem.appendChild(createButton('Menu', 'menu.svg', btnCbEvent));
+    divElem.appendChild(createButton('Contact', 'contact.svg', btnCbEvent));
     // Set up class
     divElem.className = 'navigation';
     return divElem;

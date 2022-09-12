@@ -1,5 +1,6 @@
 import { DishContainer } from 'Modules/dishContainer.js'
 import { createMenu } from 'Modules/menu.js'
+import { createImageButton } from 'Utilities/button.js'
 // Assets data
 import dataMenu from 'Assets/data/menu.json';
 import 'Assets/images/pizza-margherita.jpg'
@@ -8,6 +9,8 @@ import 'Assets/images/pizza-capricciosa.jpg'
 import 'Assets/images/pizza-pomodorini-bufala.jpg'
 import 'Assets/images/calzone-ripieno-al-forno.jpg'
 import 'Assets/images/calzone-ripieno-fritto.jpg'
+import 'Assets/images/svg/left-button.svg'
+import 'Assets/images/svg/right-button.svg'
 
 export class MenuController {
   constructor() {
@@ -19,12 +22,13 @@ export class MenuController {
   }
   #loadPizzaVector() {
     if(0 === this.vectorPizzaImgPath.length) {
-      this.vectorPizzaImgPath.push('./image/pizza-margherita.jpg');
-      this.vectorPizzaImgPath.push('./image/pizza-marinara.jpg');
-      this.vectorPizzaImgPath.push('./image/pizza-capricciosa.jpg');
-      this.vectorPizzaImgPath.push('./image/pizza-pomodorini-bufala.jpg');
-      this.vectorPizzaImgPath.push('./image/calzone-ripieno-al-forno.jpg');
-      this.vectorPizzaImgPath.push('./image/calzone-ripieno-fritto.jpg');
+      const imgRootPath = './images/';
+      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-margherita.jpg');
+      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-marinara.jpg');
+      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-capricciosa.jpg');
+      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-pomodorini-bufala.jpg');
+      this.vectorPizzaImgPath.push(imgRootPath + 'calzone-ripieno-al-forno.jpg');
+      this.vectorPizzaImgPath.push(imgRootPath + 'calzone-ripieno-fritto.jpg');
     }
   }
   #loadMenu() {
@@ -38,6 +42,29 @@ export class MenuController {
   }
   get arrayMenu() {
     return this.menu;
+  }
+  #loadPreviewButton(isRight = false) {
+    const changeImageCbEvent = (e) => {
+      const imgPizzaPreview = document.querySelector('#idPreviewPizza');
+      if(isRight) {
+        this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
+      } else {
+        this.curIdxPizzaImg = (this.curIdxPizzaImg - 1) % this.vectorPizzaImgPath.length;
+      }
+      imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
+    }
+    return createImageButton(isRight ? 'right-button.svg' : 'left-button.svg', changeImageCbEvent);
+  }
+  preparePizzaPreview() {
+    const divPreviewContainer = document.createElement('div');
+    const imgPizzaPreview = document.createElement('img');
+    imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
+    imgPizzaPreview.setAttribute('alt', 'pizza preview');
+    imgPizzaPreview.id = 'idPreviewPizza';
+    divPreviewContainer.appendChild(this.#loadPreviewButton());
+    divPreviewContainer.appendChild(imgPizzaPreview);
+    divPreviewContainer.appendChild(this.#loadPreviewButton(true));
+    return divPreviewContainer;
   }
   prepareMenu() {
     const divMenuContainer = document.createElement('div');

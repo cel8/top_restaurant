@@ -9,11 +9,14 @@ module.exports = {
     skeletonController: './src/controller/skeletonController.js',
     navController:      './src/controller/navController.js',
     menuController:     './src/controller/menuController.js',
+    homeController:     './src/controller/homeController.js',
+    contactController:  './src/controller/contactController.js',
     home:               './src/modules/home.js',
     menu:               './src/modules/menu.js',
     contact:            './src/modules/contact.js',
     dish:               './src/modules/dish.js',
     dishContainer:      './src/modules/dishContainer.js',
+    button:             './src/utilities/button.js',
   },
   devtool: 'inline-source-map',
   plugins: [
@@ -34,9 +37,10 @@ module.exports = {
   resolve: {
     alias: {
       Assets: path.resolve(__dirname, 'src/assets'),
-      Modules: path.resolve(__dirname, 'src/modules'),
       Controller: path.resolve(__dirname, 'src/controller'),
+      Modules: path.resolve(__dirname, 'src/modules'),
       Style: path.resolve(__dirname, 'src/style'),
+      Utilities: path.resolve(__dirname, 'src/utilities'),
     },
   },
   module: {

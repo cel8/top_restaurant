@@ -1,6 +1,6 @@
-import { createHome } from 'Modules/home.js'
-import { createContact } from 'Modules/contact.js'
 import { MenuController } from 'Controller/menuController.js'
+import { HomeController } from 'Controller/homeController.js'
+import { ContactController } from 'Controller/contactController.js'
 
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
@@ -17,6 +17,8 @@ export const pageType = {
 export class NavigationController {
   constructor() {
     this.menuController = new MenuController();
+    this.homeController = new HomeController();
+    this.contactController = new ContactController();
   }
   #showPage(elements) {
     const mainContent = document.querySelector('.main-content');
@@ -32,11 +34,11 @@ export class NavigationController {
         elements = this.menuController.prepareMenu();
         break;
       case pageType.contact:
-        elements = createContact();
+        elements = this.contactController.prepareContact();
         break;
       case pageType.home:
       default:
-        elements = createHome();
+        elements = this.homeController.prepareHome(this.menuController.preparePizzaPreview());
         break;
     }
     this.#showPage(elements);
