@@ -1,6 +1,7 @@
 import { DishContainer } from 'Modules/dishContainer.js'
 import { createMenu } from 'Modules/menu.js'
 import { createImageButton } from 'Utilities/button.js'
+import { Clock } from 'Utilities/clock.js'
 // Assets data
 import dataMenu from 'Assets/data/menu.json';
 import 'Assets/images/pizza-margherita.jpg'
@@ -17,6 +18,7 @@ export class MenuController {
     this.vectorPizzaImgPath = [];
     this.curIdxPizzaImg = 0;
     this.menu = [];
+    this.updatePreviewClock = null;
     this.#loadPizzaVector();
     this.#loadMenu();
   }
@@ -56,6 +58,13 @@ export class MenuController {
     return createImageButton(isRight ? 'right-button.svg' : 'left-button.svg', changeImageCbEvent);
   }
   preparePizzaPreview() {
+    const changeImageCbEvent = () => {
+      const imgPizzaPreview = document.querySelector('#idPreviewPizza');
+      if(imgPizzaPreview) {
+        this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
+        imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
+      }
+    }
     const divPreviewContainer = document.createElement('div');
     const imgPizzaPreview = document.createElement('img');
     imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
@@ -64,6 +73,13 @@ export class MenuController {
     divPreviewContainer.appendChild(this.#loadPreviewButton());
     divPreviewContainer.appendChild(imgPizzaPreview);
     divPreviewContainer.appendChild(this.#loadPreviewButton(true));
+
+    // Automatic update
+    if(!this.updatePreviewClock) {
+      this.updatePreviewClock = new Clock('h:m:s', changeImageCbEvent, 5000);
+      this.updatePreviewClock.start();
+    }
+    
     return divPreviewContainer;
   }
   prepareMenu() {
