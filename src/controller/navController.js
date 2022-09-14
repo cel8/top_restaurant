@@ -1,12 +1,7 @@
 import { MenuController } from 'Controller/menuController.js'
 import { HomeController } from 'Controller/homeController.js'
 import { ContactController } from 'Controller/contactController.js'
-
-function removeAllChildNodes(parent) {
-  while (parent.firstChild) {
-      parent.removeChild(parent.firstChild);
-  }
-}
+import { removeAllChildNodes } from 'Utilities/nodeManger.js'
 
 export const pageType = {
   home: 'Home',

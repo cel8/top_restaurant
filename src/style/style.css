@@ -156,6 +156,10 @@ header {
   width: 32px;
 }
 
+.icon-link {
+  width: 24px;
+}
+
 #content {
   height: 100%;
 }
@@ -186,4 +190,14 @@ main {
   20%   { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
   80%   { background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%); }
   100%  { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
+}
+
+.previewPizzaContainer {
+  width: 600px;
+  height: 700px;
+}
+
+#idPreviewPizza {
+  max-width: 100%;
+  max-height: 100%;
 }

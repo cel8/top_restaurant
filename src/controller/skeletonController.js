@@ -1,8 +1,9 @@
 import 'Assets/images/svg/home.svg'
 import 'Assets/images/svg/menu.svg'
 import 'Assets/images/svg/contact.svg'
+import 'Assets/images/svg/github.svg'
 import { pageType, NavigationController } from 'Controller/navController.js'
-import { createButton } from 'Utilities/button.js'
+import { createButton, createImageLinkButton } from 'Utilities/button.js'
 
 export class SkeletonController {
   constructor() {
@@ -51,7 +52,7 @@ export class SkeletonController {
     aElem.textContent = 'TODO';
     // Append to footer
     footer.appendChild(pElem);
-    footer.appendChild(aElem);
+    footer.appendChild(createImageLinkButton('https://github.com/cel8', 'github.svg'));
   }
   #createMain(main) {
     const div = document.createElement('div');

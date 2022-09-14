@@ -3,9 +3,10 @@ export class Clock {
     this.template = template;
     this.eventCbFunc = cbFunc;
     this.updateTimeSec = updateTimeSec;
+    this.running = false;
   }
 
-  render() {
+  #render() {
     let date = new Date();
 
     let hours = date.getHours();
@@ -25,12 +26,18 @@ export class Clock {
     this.eventCbFunc();
   }
 
+  get isRunning() {
+    return this.running;
+  }
+
   stop() {
     clearInterval(this.timer);
+    this.running = false;
   }
 
   start() {
-    this.render();
-    this.timer = setInterval(() => this.render(), this.updateTimeSec);
+    this.running = true;
+    this.#render();
+    this.timer = setInterval(() => this.#render(), this.updateTimeSec);
   }
 }

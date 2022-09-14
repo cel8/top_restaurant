@@ -26,3 +26,16 @@ export function createButton(btnText = '', svgIconFileName = null, cbEvent = und
 export function createImageButton(svgIconFileName, cbEvent = undefined) {
   return createButton('', svgIconFileName, cbEvent)
 }
+
+export function createImageLinkButton(link, svgIconFileName) {
+  const fileFullPath = './images/' + svgIconFileName;
+  const aElem = document.createElement('a');
+  const imgElem = document.createElement('img');
+  aElem.setAttribute('href', link);
+  aElem.setAttribute('target', '_blank');
+  imgElem.setAttribute('src', fileFullPath);
+  imgElem.setAttribute('alt', 'imageLink');
+  imgElem.className = 'icon-link';
+  aElem.appendChild(imgElem);
+  return aElem;
+}

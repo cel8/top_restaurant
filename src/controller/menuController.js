@@ -1,5 +1,7 @@
 import { DishContainer } from 'Modules/dishContainer.js'
-import { createMenu } from 'Modules/menu.js'
+import { createPreviewContainer, changePizzaPreview, 
+          createMenu, addDish, createDishContainer,
+          addDishContainer, createMenuContainer } from 'Modules/menu.js'
 import { createImageButton } from 'Utilities/button.js'
 import { Clock } from 'Utilities/clock.js'
 // Assets data
@@ -12,6 +14,7 @@ import 'Assets/images/calzone-ripieno-al-forno.jpg'
 import 'Assets/images/calzone-ripieno-fritto.jpg'
 import 'Assets/images/svg/left-button.svg'
 import 'Assets/images/svg/right-button.svg'
+import 'Assets/images/svg/play-pause-button.svg'
 
 export class MenuController {
   constructor() {
@@ -45,65 +48,63 @@ export class MenuController {
   get arrayMenu() {
     return this.menu;
   }
-  #loadPreviewButton(isRight = false) {
-    const changeImageCbEvent = (e) => {
-      const imgPizzaPreview = document.querySelector('#idPreviewPizza');
-      if(isRight) {
-        this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
+  #loadPreviewButton(iconName) {
+    const btnCbEvent = (_) => {
+      if(iconName.includes("play-pause")) { 
+        // Manage event timer
+        if(this.updatePreviewClock) {
+          if(this.updatePreviewClock.isRunning) {
+            this.updatePreviewClock.stop()
+          } else {
+            this.updatePreviewClock.start();
+          }
+        }
       } else {
-        this.curIdxPizzaImg = (this.curIdxPizzaImg - 1) % this.vectorPizzaImgPath.length;
+        if(iconName.includes("right")) {
+          this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
+        } else {
+          this.curIdxPizzaImg = (this.curIdxPizzaImg - 1) % this.vectorPizzaImgPath.length;
+          // Handle negative modulo
+          if(this.curIdxPizzaImg < 0) {
+            this.curIdxPizzaImg = ((this.vectorPizzaImgPath.length - 1 >= 0) ? this.vectorPizzaImgPath.length - 1 : 0);
+          } 
+        }
+        changePizzaPreview(this.vectorPizzaImgPath[this.curIdxPizzaImg]);
       }
-      imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
     }
-    return createImageButton(isRight ? 'right-button.svg' : 'left-button.svg', changeImageCbEvent);
+    return createImageButton(iconName, btnCbEvent);
   }
   preparePizzaPreview() {
+    let buttons = [];
     const changeImageCbEvent = () => {
-      const imgPizzaPreview = document.querySelector('#idPreviewPizza');
-      if(imgPizzaPreview) {
-        this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
-        imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
-      }
+      this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
+      changePizzaPreview(this.vectorPizzaImgPath[this.curIdxPizzaImg]);
     }
-    const divPreviewContainer = document.createElement('div');
-    const imgPizzaPreview = document.createElement('img');
-    imgPizzaPreview.setAttribute('src', this.vectorPizzaImgPath[this.curIdxPizzaImg]);
-    imgPizzaPreview.setAttribute('alt', 'pizza preview');
-    imgPizzaPreview.id = 'idPreviewPizza';
-    divPreviewContainer.appendChild(this.#loadPreviewButton());
-    divPreviewContainer.appendChild(imgPizzaPreview);
-    divPreviewContainer.appendChild(this.#loadPreviewButton(true));
-
     // Automatic update
     if(!this.updatePreviewClock) {
       this.updatePreviewClock = new Clock('h:m:s', changeImageCbEvent, 5000);
-      this.updatePreviewClock.start();
     }
-    
+    // Create control buttons
+    buttons.push(this.#loadPreviewButton('left-button.svg'));
+    buttons.push(this.#loadPreviewButton('play-pause-button.svg'));
+    buttons.push(this.#loadPreviewButton('right-button.svg'));
+    // Create preview container
+    const divPreviewContainer = createPreviewContainer(this.vectorPizzaImgPath[this.curIdxPizzaImg], buttons);
     return divPreviewContainer;
   }
   prepareMenu() {
-    const divMenuContainer = document.createElement('div');
-    
+    // Create the menu container
+    const divMenuContainer = createMenuContainer();
+    // For each dish container
     this.menu.forEach((dishContainer) => {
-      const pDishContainerName = document.createElement('p');
-      const gridDishContainer = document.createElement('div');
-      // Get dish container
-      pDishContainerName.textContent = dishContainer.name;
-      const dishes = dishContainer.dishes;
-      dishes.forEach((dish) => {
-        const pDishName = document.createElement('p');
-        const pDishPrice = document.createElement('p');
-        const pDishDescription = document.createElement('p');
-        pDishName.textContent = dish.name;
-        pDishPrice.textContent = dish.price;
-        pDishDescription.textContent = dish.description;
-        gridDishContainer.appendChild(pDishName);
-        gridDishContainer.appendChild(pDishPrice);
-        gridDishContainer.appendChild(pDishDescription);
+      // Create the dish container
+      const divDishContainer = createDishContainer()
+      // Add inside the container the dishes
+      dishContainer.dishes.forEach((dish) => {
+        addDish(divDishContainer, dish);
       });
-      divMenuContainer.appendChild(pDishContainerName);
-      divMenuContainer.appendChild(gridDishContainer);
+      // Add inside the menu container the dish container
+      addDishContainer(divMenuContainer, dishContainer.name, divDishContainer);
     });
     return createMenu(divMenuContainer);
   }
