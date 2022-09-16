@@ -1,15 +1,14 @@
 import 'Assets/images/map.png'
+import * as nodeManager from 'Utilities/nodeManager.js'
+import { createButton } from 'Utilities/button.js'
 
 function createInfoTextData(fatherDiv, text, title = false) {
-  const p = document.createElement('p');
-  p.textContent = text;
-  p.className = title ? 'contactTitle' : 'contactInfo';
-  fatherDiv.appendChild(p);
+  nodeManager.createAddNode('p', fatherDiv, title ? 'contactTitle' : 'contactInfo', null, text);
 }
 
 function createInfo() {
-  const divContact = document.createElement('div');
   // Create HTML elements text content
+  const divContact = nodeManager.createNode('div');
   createInfoTextData(divContact, 'CONTACT', true);
   createInfoTextData(divContact, 'Toledo St, 99,');
   createInfoTextData(divContact, '80010, Naples, Italy');
@@ -26,26 +25,19 @@ function createInfo() {
 }
 
 function createLocation() {
-  const divLocation = document.createElement('div');
+  const divLocation = nodeManager.createNode('div');
   createInfoTextData(divLocation, 'WHERE WE ARE', true);
-  const imgElem = document.createElement('img');
-  imgElem.setAttribute('src', './images/map.png');
-  imgElem.setAttribute('alt', 'mapLocation');
-  divLocation.appendChild(imgElem);
+  nodeManager.createAddNodeImg('map.png', 'mapLocation', divLocation);
   return divLocation;
 }
 
 export function createContact() {
   let elements = [];
-  const divMain = document.createElement('div');
-  // Book table button
-  const btnReserve = document.createElement('button');
-  btnReserve.textContent = 'BOOK A TABLE';
+  const divMain = nodeManager.createNodeClass('div', 'gridContact');
   // Add to main grid
-  divMain.appendChild(createInfo());
-  divMain.appendChild(createLocation());
-  divMain.appendChild(btnReserve);
-  divMain.className = 'gridContact';
+  nodeManager.addNodeChild(divMain, createInfo());
+  nodeManager.addNodeChild(divMain, createLocation());
+  nodeManager.addNodeChild(divMain, createButton('BOOK A TABLE'));
   elements.push(divMain);
   return elements;
 }

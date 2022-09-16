@@ -27,13 +27,12 @@ export class MenuController {
   }
   #loadPizzaVector() {
     if(0 === this.vectorPizzaImgPath.length) {
-      const imgRootPath = './images/';
-      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-margherita.jpg');
-      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-marinara.jpg');
-      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-capricciosa.jpg');
-      this.vectorPizzaImgPath.push(imgRootPath + 'pizza-pomodorini-bufala.jpg');
-      this.vectorPizzaImgPath.push(imgRootPath + 'calzone-ripieno-al-forno.jpg');
-      this.vectorPizzaImgPath.push(imgRootPath + 'calzone-ripieno-fritto.jpg');
+      this.vectorPizzaImgPath.push('pizza-margherita.jpg');
+      this.vectorPizzaImgPath.push('pizza-marinara.jpg');
+      this.vectorPizzaImgPath.push('pizza-capricciosa.jpg');
+      this.vectorPizzaImgPath.push('pizza-pomodorini-bufala.jpg');
+      this.vectorPizzaImgPath.push('calzone-ripieno-al-forno.jpg');
+      this.vectorPizzaImgPath.push('calzone-ripieno-fritto.jpg');
     }
   }
   #loadMenu() {
@@ -45,12 +44,9 @@ export class MenuController {
       this.menu.push(dishContainer);
     });
   }
-  get arrayMenu() {
-    return this.menu;
-  }
   #loadPreviewButton(iconName) {
     const btnCbEvent = (_) => {
-      if(iconName.includes("play-pause")) { 
+      if(iconName.includes('play-pause')) { 
         // Manage event timer
         if(this.updatePreviewClock) {
           if(this.updatePreviewClock.isRunning) {
@@ -60,7 +56,7 @@ export class MenuController {
           }
         }
       } else {
-        if(iconName.includes("right")) {
+        if(iconName.includes('right')) {
           this.curIdxPizzaImg = (this.curIdxPizzaImg + 1) % this.vectorPizzaImgPath.length;
         } else {
           this.curIdxPizzaImg = (this.curIdxPizzaImg - 1) % this.vectorPizzaImgPath.length;

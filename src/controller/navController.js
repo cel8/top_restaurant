@@ -1,7 +1,7 @@
 import { MenuController } from 'Controller/menuController.js'
 import { HomeController } from 'Controller/homeController.js'
 import { ContactController } from 'Controller/contactController.js'
-import { removeAllChildNodes } from 'Utilities/nodeManger.js'
+import { removeAllChildNodes } from 'Utilities/nodeManager.js'
 
 export const pageType = {
   home: 'Home',

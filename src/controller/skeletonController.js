@@ -4,12 +4,14 @@ import 'Assets/images/svg/contact.svg'
 import 'Assets/images/svg/github.svg'
 import { pageType, NavigationController } from 'Controller/navController.js'
 import { createButton, createImageLinkButton } from 'Utilities/button.js'
+import * as nodeManager from 'Utilities/nodeManager.js'
 
 export class SkeletonController {
   constructor() {
     this.navController = new NavigationController();
   }
-  #createNavigationBar() {
+  #createNavigationButtons() {
+    const buttons = [];
     const btnCbEvent = (e) => {
       const pElem = e.target.querySelector('p');
       if(pElem === null) return;
@@ -23,55 +25,40 @@ export class SkeletonController {
       }
       this.navController.changePage(page);
     }
-    const divElem = document.createElement('div');
-    // Fill text in button
-    divElem.appendChild(createButton('Home', 'home.svg', btnCbEvent));
-    divElem.appendChild(createButton('Menu', 'menu.svg', btnCbEvent));
-    divElem.appendChild(createButton('Contact', 'contact.svg', btnCbEvent));
-    // Set up class
-    divElem.className = 'navigation';
-    return divElem;
+
+    // Create node and fill text in button    
+    buttons.push(createButton('Home', 'home.svg', btnCbEvent));
+    buttons.push(createButton('Menu', 'menu.svg', btnCbEvent));
+    buttons.push(createButton('Contact', 'contact.svg', btnCbEvent));
+    return buttons;
   }
   #createHeader(header) {
-    const divElem = document.createElement('div');
-    divElem.textContent = 'Ristorante';
-    divElem.className = 'siteTitle'
-    // Append child
-    header.appendChild(divElem);
-    header.appendChild(this.#createNavigationBar());
+    // Append children
+    nodeManager.createAddNode('div', header, 'siteTitle', null, 'La Bella Napoli');
+    nodeManager.createAddNode('div', header, 'navigation', null, null, this.#createNavigationButtons());
   }
   #createFooter(footer) {
-    const pElem = document.createElement('p');
-    const aElem = document.createElement('a');
     const curYear = new Date().getFullYear();
-    // Text modify
-    pElem.textContent = `Copyright © ${curYear} Alessandro Celotti`;
-    aElem.setAttribute('href', 'https://github.com/cel8');
-    aElem.setAttribute('target', '_blank');
-    // TODO insert icon
-    aElem.textContent = 'TODO';
     // Append to footer
-    footer.appendChild(pElem);
-    footer.appendChild(createImageLinkButton('https://github.com/cel8', 'github.svg'));
+    nodeManager.createAddNode('p', footer, null, null, `Copyright © ${curYear} Alessandro Celotti`);
+    nodeManager.addNodeChild(footer, createImageLinkButton('https://github.com/cel8', 'github.svg'));
   }
   #createMain(main) {
-    const div = document.createElement('div');
-    div.className = 'main-content';
-    main.appendChild(div);
+    nodeManager.createAddNode('div', main, 'main-content');
   }
   createSkeleton(content) {
     // Create content elements
-    const header = document.createElement('header');
-    const main = document.createElement('main');
-    const footer = document.createElement('footer');
+    const header = nodeManager.createNode('header');
+    const main   = nodeManager.createNode('main');
+    const footer = nodeManager.createNode('footer');
     // Create elements
     this.#createHeader(header);
     this.#createMain(main);
     this.#createFooter(footer);
     // Append 'em to body#content
-    content.appendChild(header);
-    content.appendChild(main);
-    content.appendChild(footer);
+    nodeManager.addNodeChild(content, header);
+    nodeManager.addNodeChild(content, main);
+    nodeManager.addNodeChild(content, footer);
     this.navController.changePage(pageType.home);
   }
 }
