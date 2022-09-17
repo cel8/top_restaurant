@@ -8,7 +8,7 @@ export function createButton(btnText = '', svgIconFileName = null, cbEvent = und
   }
   // Add text when contains something
   if(btnText.length > 0) {
-    nodeManager.createAddNode('p', btn, null, null, btnText);
+    nodeManager.createAddNode('p', btn, _, _, btnText);
   }
   // Add button event
   btn.onclick = cbEvent;
@@ -20,7 +20,7 @@ export function createImageButton(svgIconFileName, cbEvent = undefined) {
 }
 
 export function createImageLinkButton(link, svgIconFileName) {
-  const node = nodeManager.createNodeLink(link, null, null, null, 
+  const node = nodeManager.createNodeLink(link, _, _, _, 
     nodeManager.createNodeImg(svgIconFileName, 'imageLink', 'icon-link')
   );
   return node;

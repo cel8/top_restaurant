@@ -34,13 +34,13 @@ export class SkeletonController {
   }
   #createHeader(header) {
     // Append children
-    nodeManager.createAddNode('div', header, 'siteTitle', null, 'La Bella Napoli');
-    nodeManager.createAddNode('div', header, 'navigation', null, null, this.#createNavigationButtons());
+    nodeManager.createAddNode('div', header, 'siteTitle', _, 'La Bella Napoli');
+    nodeManager.createAddNode('div', header, 'navigation', _, _, this.#createNavigationButtons());
   }
   #createFooter(footer) {
     const curYear = new Date().getFullYear();
     // Append to footer
-    nodeManager.createAddNode('p', footer, null, null, `Copyright © ${curYear} Alessandro Celotti`);
+    nodeManager.createAddNode('p', footer, _, _, `Copyright © ${curYear} Alessandro Celotti`);
     nodeManager.addNodeChild(footer, createImageLinkButton('https://github.com/cel8', 'github.svg'));
   }
   #createMain(main) {

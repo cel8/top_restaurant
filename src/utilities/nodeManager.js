@@ -28,20 +28,20 @@ export function createNode(type, className = null, id = null, content = null, ch
 }
 
 export function createNodeContent(type, content, className = null, id = null) {
-  return createNode(type, className, id, content, null);
+  return createNode(type, className, id, content, _);
 }
 
 export function createNodeClass(type, className, id = null, content = null) {
-  return createNode(type, className, id, content, null);
+  return createNode(type, className, id, content, _);
 }
 
 export function createNodeID(type, id, className = null, content = null) {
-  return createNode(type, className, id, content, null);
+  return createNode(type, className, id, content, _);
 }
 
 export function createNodeImg(imgFileName, alt, className = null, id = null) {
   const fileFullPath = './images/' + imgFileName;
-  const node = createNode('img', className, id, null, null);
+  const node = createNode('img', className, id, _, _);
   node.setAttribute('src', fileFullPath);
   node.setAttribute('alt', alt);
   return node;

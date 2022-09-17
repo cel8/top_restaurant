@@ -3,7 +3,7 @@ import * as nodeManager from 'Utilities/nodeManager.js'
 import { createButton } from 'Utilities/button.js'
 
 function createInfoTextData(fatherDiv, text, title = false) {
-  nodeManager.createAddNode('p', fatherDiv, title ? 'contactTitle' : 'contactInfo', null, text);
+  nodeManager.createAddNode('p', fatherDiv, title ? 'contactTitle' : 'contactInfo', _, text);
 }
 
 function createInfo() {
@@ -27,7 +27,7 @@ function createInfo() {
 function createLocation() {
   const divLocation = nodeManager.createNode('div');
   createInfoTextData(divLocation, 'WHERE WE ARE', true);
-  nodeManager.createAddNodeImg('map.png', 'mapLocation', divLocation);
+  nodeManager.createAddNodeImg('map.png', 'mapLocation', divLocation, 'mapLocation');
   return divLocation;
 }
 
