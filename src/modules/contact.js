@@ -37,7 +37,9 @@ export function createContact() {
   // Add to main grid
   nodeManager.addNodeChild(divMain, createInfo());
   nodeManager.addNodeChild(divMain, createLocation());
-  nodeManager.addNodeChild(divMain, createButton('BOOK A TABLE'));
+  nodeManager.addNodeChild(divMain, createButton('BOOK A TABLE', null, (_) => {
+    window.open('https://github.com/cel8');
+  }));
   elements.push(divMain);
   return elements;
 }
