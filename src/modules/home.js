@@ -5,8 +5,10 @@ function createHomeTitle() {
 }
 
 function createHomeDescription() {
-  const description = 'A lifelong passion for the tradition of Neapolitan pizza and it’s true flavours.\nA dough leavened for 24 hours, but also many delicious and appetizing proposals with the specialties of our chip shop.';
-  const divDescription = nodeManager.createNodeContent('p', description, 'homeDescription');
+  const descriptions = [];
+  descriptions.push(nodeManager.createNodeContent('p', 'A lifelong passion for the tradition of Neapolitan pizza and it’s true flavours.'));
+  descriptions.push(nodeManager.createNodeContent('p', 'A dough leavened for 24 hours, but also many delicious and appetizing proposals with the specialties of our chip shop.'));
+  const divDescription = nodeManager.createNode('div', 'homeDescription', null, null, descriptions);
   return divDescription;
 }
 

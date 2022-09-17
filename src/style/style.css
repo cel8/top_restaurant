@@ -85,7 +85,7 @@ html, body {
   padding: 0px;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  background-color: #94a3b8; /* Black background with opacity */
+  background-image: url('Assets/images/background.jpg');
 }
 
 footer {
@@ -108,11 +108,11 @@ a {
 }
 
 header {
-  margin: 0rem 1rem 0rem 1rem;
-  padding-top: 0.5rem;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  background-color: #94a3b8; /* Black background with opacity */
 }
 
 .siteTitle {
@@ -165,15 +165,14 @@ header {
 }
 
 main {
-  height: 875px;
   padding: 3.5rem;
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
-  background-image: url('Assets/images/background.jpg');
   
 }
 
 .main-content {
+  padding: 3rem;
   background-color: #300808;
   animation: rise 1.5s ease-in infinite;
   background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%);
@@ -192,12 +191,87 @@ main {
   100%  { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
 }
 
+/* Home */
+
+.homeTitle {
+  font-size: xx-large;
+}
+
+.homeDescription {
+  margin-bottom: 2rem;
+}
+
+.previewContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 .previewPizzaContainer {
-  width: 600px;
-  height: 700px;
+  width: 550px;
+  height: 500px;
+  background-color: white;
+  padding: 1rem;
 }
 
 #idPreviewPizza {
   max-width: 100%;
   max-height: 100%;
+}
+
+.previewContainerCtrl {
+  display: flex;
+  gap: 0.3rem;
+}
+
+/* CONTACT */
+
+.gridContact {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.contactTitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.gridContact > button {
+  font-weight: bold;
+}
+
+/* MENU */
+
+.menuList {
+  text-align: left;
+}
+
+.dishContainerName { 
+  font-size: 48px;
+  margin-bottom: 0;
+  margin-top: 0.5rem;
+  color: #ff5000;
+}
+.dishContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.dishContainer > div {
+  display: grid;
+  grid-template-columns: 1fr 0.1fr;
+}
+
+.dish > div > :first-child {
+  font-weight: bold;
+}
+
+.dish > div > :last-child {
+  font-size: small;
+}
+
+.dishContainer > div > :last-child {
+  text-align: center;
+  border-left: dashed 0.1rem #ffd900;
 }

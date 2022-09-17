@@ -25,9 +25,13 @@ export function createPreviewContainer(imageFileName, buttons = null) {
 }
 
 export function addDish(container, dish) {
-  nodeManager.createAddNode('p', container, null, null, dish.name);
-  nodeManager.createAddNode('p', container, null, null, dish.price);
-  nodeManager.createAddNode('p', container, null, null, dish.description);
+  const div = nodeManager.createNodeClass('div', 'dish');
+  const divDish = nodeManager.createNode('div');
+  nodeManager.createAddNode('p', divDish, null, null, dish.name);
+  nodeManager.createAddNode('p', divDish, null, null, dish.description);
+  nodeManager.addNodeChild(div, divDish);
+  nodeManager.createAddNode('p', div, null, null, dish.price);
+  nodeManager.addNodeChild(container, div);
 }
 
 export function createDishContainer() {
@@ -35,7 +39,7 @@ export function createDishContainer() {
 }
 
 export function addDishContainer(menuContainer, dishContainerName, gridDishContainer) {
-  nodeManager.createAddNode('p', menuContainer, 'dishContainerName', dishContainerName);
+  nodeManager.createAddNode('p', menuContainer, 'dishContainerName', null, dishContainerName);
   nodeManager.addNodeChild(menuContainer, gridDishContainer);
 }
 
