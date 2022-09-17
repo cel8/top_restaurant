@@ -20,7 +20,7 @@
     ]
   },
   {
-    "dish-name": "Pizza",
+    "dish-name": "Pizzas",
     "menu": [
       { 
         "name": "Margherita", 
@@ -45,15 +45,15 @@
     ]
   },
   {
-    "dish-name": "Calzone",
+    "dish-name": "Stuffed Pizzas",
     "menu": [
       { 
-        "name": "Baked calzone", 
+        "name": "Baked stuffed pizza", 
         "description": "Tomato “Antichi sapori di Napoli”, wild oregano, garlic, extra virgin olive oil from Frantoio La Torretta, basil.", 
         "price": "€ 6,00"
       },
       { 
-        "name": "Fried calzone", 
+        "name": "Fried stuffed pizza", 
         "description": "Tomato “Antichi sapori di Napoli”, wild oregano, garlic, extra virgin olive oil from Frantoio La Torretta, basil.", 
         "price": "€ 6,00"
       }

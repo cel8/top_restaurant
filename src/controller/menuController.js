@@ -9,9 +9,9 @@ import dataMenu from 'Assets/data/menu.json';
 import 'Assets/images/pizza-margherita.jpg'
 import 'Assets/images/pizza-marinara.jpg'
 import 'Assets/images/pizza-capricciosa.jpg'
-import 'Assets/images/pizza-pomodorini-bufala.jpg'
-import 'Assets/images/calzone-ripieno-al-forno.jpg'
-import 'Assets/images/calzone-ripieno-fritto.jpg'
+import 'Assets/images/pizza-filetto.jpg'
+import 'Assets/images/ripieno-al-forno.jpg'
+import 'Assets/images/ripieno-fritto.jpg'
 import 'Assets/images/svg/left-button.svg'
 import 'Assets/images/svg/right-button.svg'
 import 'Assets/images/svg/play-pause-button.svg'
@@ -30,9 +30,9 @@ export class MenuController {
       this.vectorPizzaImgPath.push('pizza-margherita.jpg');
       this.vectorPizzaImgPath.push('pizza-marinara.jpg');
       this.vectorPizzaImgPath.push('pizza-capricciosa.jpg');
-      this.vectorPizzaImgPath.push('pizza-pomodorini-bufala.jpg');
-      this.vectorPizzaImgPath.push('calzone-ripieno-al-forno.jpg');
-      this.vectorPizzaImgPath.push('calzone-ripieno-fritto.jpg');
+      this.vectorPizzaImgPath.push('pizza-filetto.jpg');
+      this.vectorPizzaImgPath.push('ripieno-al-forno.jpg');
+      this.vectorPizzaImgPath.push('ripieno-fritto.jpg');
     }
   }
   #loadMenu() {

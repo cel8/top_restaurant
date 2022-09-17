@@ -107,6 +107,8 @@ a {
   color: inherit; 
 }
 
+/* MAIN SKELETON */
+
 header {
   padding: 1.5rem;
   display: flex;
@@ -116,13 +118,71 @@ header {
 }
 
 .siteTitle {
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #ffffff 0%,
+    #0f8500 10%,
+    #16bb00 29%,
+    #ffffff 40%,
+    #ffffff 50%,
+    #f10000 69%,
+    #970000 85%,
+    #ffffff 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  color: #fff;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 5s linear infinite;
   font-size: 60px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
 }
 
 .navigation {
   display: flex;
   gap: 2rem;
 }
+
+#content {
+  height: 100%;
+}
+
+main {
+  padding: 3.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem; 
+}
+
+.main-content {
+  padding: 3rem;
+  background-color: #300808;
+  animation: rise 1.5s ease-in infinite;
+  background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%);
+  color: #ffd900;
+  border-top-left-radius: 5rem;
+  border-top-right-radius: 5rem;
+  border: solid black 0.1rem;
+  overflow-y: none;
+  height: 800px;
+}
+
+@keyframes rise {
+  0%    { background-image: radial-gradient(#ff5000 10%, rgba(255, 80, 0, 0) 70%); }
+  20%   { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
+  80%   { background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%); }
+  100%  { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
+}
+
+/* CUSTOM ITEMS */
 
 .navButton {
   display: flex;
@@ -160,35 +220,26 @@ header {
   width: 24px;
 }
 
-#content {
-  height: 100%;
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
 }
 
-main {
-  padding: 3.5rem;
-  margin-top: 2.5rem;
-  margin-bottom: 2.5rem;
-  
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0);
 }
 
-.main-content {
-  padding: 3rem;
-  background-color: #300808;
-  animation: rise 1.5s ease-in infinite;
-  background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%);
-  color: #ffd900;
-  border-top-left-radius: 5rem;
-  border-top-right-radius: 5rem;
-  border: solid black 0.1rem;
-  height: 100%;
-  overflow-y: auto;
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 217, 0);
+  border-radius: 5rem;
 }
 
-@keyframes rise {
-  0%    { background-image: radial-gradient(#ff5000 10%, rgba(255, 80, 0, 0) 70%); }
-  20%   { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
-  80%   { background-image: radial-gradient(#ff5000 15%, rgba(255, 80, 0, 0) 70%); }
-  100%  { background-image: radial-gradient(#ff5000 12%, rgba(255, 80, 0, 0) 70%); }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 217, 0, 0.5);
+  border-radius: 5rem;
 }
 
 /* Home */
@@ -207,6 +258,7 @@ main {
   align-items: center;
   gap: 1rem;
 }
+
 .previewPizzaContainer {
   width: 550px;
   height: 500px;
@@ -228,8 +280,13 @@ main {
 
 .gridContact {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-evenly;
+  margin-top: 2.5rem;
+}
+
+.gridContact > :last-child {
+  align-self: center;
 }
 
 .contactTitle {
@@ -245,6 +302,8 @@ main {
 
 .menuList {
   text-align: left;
+  overflow-y: auto;
+  height: inherit;
 }
 
 .dishContainerName { 
@@ -253,6 +312,7 @@ main {
   margin-top: 0.5rem;
   color: #ff5000;
 }
+
 .dishContainer {
   display: flex;
   flex-direction: column;
